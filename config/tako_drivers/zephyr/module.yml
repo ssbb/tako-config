@@ -1,0 +1,6 @@
+name: tako_drivers
+build:
+  depends:
+    - drivers
+  cmake: .
+  kconfig: Kconfig

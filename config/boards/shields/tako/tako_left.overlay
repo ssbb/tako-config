@@ -1,0 +1,55 @@
+/*
+ * Copyright (c) 2023 ssbb
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
+#include "tako.dtsi"
+
+/ {
+  chosen {
+    zmk,kscan = &kscan;
+  };
+
+  kscan: kscan {
+    compatible = "zmk,kscan-gpio-ec";
+    label = "KSCAN";
+    row-gpios
+    = <&pro_micro 4 GPIO_ACTIVE_HIGH>
+    , <&pro_micro 5 GPIO_ACTIVE_HIGH>
+    , <&pro_micro 6 GPIO_ACTIVE_HIGH>
+    , <&pro_micro 16 GPIO_ACTIVE_HIGH>
+    ;
+
+    mux-sel-gpios
+    = <&pro_micro 21 GPIO_ACTIVE_HIGH>
+    , <&pro_micro 20 GPIO_ACTIVE_HIGH>
+    , <&pro_micro 18 GPIO_ACTIVE_HIGH>
+    ;
+
+    mux-en-gpios = <&pro_micro 10 GPIO_ACTIVE_HIGH>;
+    discharge-gpios = <&pro_micro 14 GPIO_ACTIVE_HIGH>;
+    col-channels = <4 6 2 1 3>;
+    io-channels = <&adc 1>;
+    power-gpios = <&pro_micro 15 GPIO_ACTIVE_HIGH>;
+  };
+};
+
+&adc {
+  #address-cells = <1>;
+  #size-cells = <0>;
+  status = "okay";
+
+  channel@1 {
+    reg = <1>;
+    zephyr,gain = "ADC_GAIN_1_6";
+    zephyr,reference = "ADC_REF_INTERNAL";
+    zephyr,acquisition-time = <ADC_ACQ_TIME(ADC_ACQ_TIME_MICROSECONDS, 10)>;
+    zephyr,resolution = <10>;
+    zephyr,input-positive = <NRF_SAADC_AIN0>; /* P0.02 */
+  };
+};
+
+&nice_view_spi {
+    cs-gpios = <&pro_micro 7 GPIO_ACTIVE_HIGH>;
+};

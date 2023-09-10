@@ -1,0 +1,43 @@
+# Copyright (c) 2023 The ZMK Contributors
+# SPDX-License-Identifier: MIT
+
+description: EC keyboard matrix controller
+
+compatible: "zmk,kscan-gpio-ec"
+
+include: kscan.yaml
+
+properties:
+  row-gpios:
+    type: phandle-array
+    required: true
+  mux-sel-gpios:
+    type: phandle-array
+    required: true
+  mux-en-gpios:
+    type: phandle-array
+    required: true
+  discharge-gpios:
+    type: phandle-array
+    required: true
+  io-channels:
+    type: phandle-array
+    required: true
+  col-channels:
+    type: array
+    required: true
+  poll-period-ms:
+    type: int
+    default: 10
+    description: Time between reads in milliseconds when no key is pressed and ZMK_KSCAN_MATRIX_POLLING is enabled
+  idle-poll-period-ms:
+    type: int
+    default: 30
+  sleep-poll-period-ms:
+    type: int
+    default: 3000
+  muxes:
+    type: phandle-array
+  power-gpios:
+    type: phandle-array
+    required: true
