@@ -29,7 +29,7 @@ properties:
   poll-period-ms:
     type: int
     default: 10
-    description: Time between reads in milliseconds when no key is pressed and ZMK_KSCAN_MATRIX_POLLING is enabled
+    description: Time between reads in milliseconds.
   idle-poll-period-ms:
     type: int
     default: 30
