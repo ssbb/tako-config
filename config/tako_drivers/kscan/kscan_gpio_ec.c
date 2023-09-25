@@ -379,7 +379,7 @@ static const struct kscan_driver_api kscan_ec_api = {
   ZMK_SUBSCRIPTION(kscan_ec##n, zmk_activity_state_changed);                   \
                                                                                \
   DEVICE_DT_INST_DEFINE(n, &kscan_ec_init, NULL, &kscan_ec_data_##n,           \
-                        &kscan_ec_config_##n, APPLICATION,                     \
-                        CONFIG_APPLICATION_INIT_PRIORITY, &kscan_ec_api);
+                        &kscan_ec_config_##n, POST_KERNEL,                     \
+                        CONFIG_KSCAN_INIT_PRIORITY, &kscan_ec_api);
 
 DT_INST_FOREACH_STATUS_OKAY(KSCAN_EC_INIT);
