@@ -320,7 +320,7 @@ static int kscan_ec_activity_event_handler(const struct device *dev,
 
   switch (ev->state) {
   case ZMK_ACTIVITY_ACTIVE:
-    bool poll_period = config->poll_period_ms;
+    poll_period = config->poll_period_ms;
     break;
   case ZMK_ACTIVITY_IDLE:
     poll_period = config->idle_poll_period_ms;
