@@ -15,7 +15,7 @@
 include:
   - board: nice_nano_v2
     shield: tako_left
-    cmake-args: -DZEPHYR_EXTRA_MODULES="$PWD/zmk/app/module;${GITHUB_WORKSPACE}/config/tako_drivers/"
+    cmake-args: -DZMK_EXTRA_MODULES="${GITHUB_WORKSPACE}/config/tako_drivers/"
   - board: nice_nano_v2
     shield: tako_right
-    cmake-args: -DZEPHYR_EXTRA_MODULES="$PWD/zmk/app/module;${GITHUB_WORKSPACE}/config/tako_drivers/"    
+    cmake-args: -DZMK_EXTRA_MODULES="${GITHUB_WORKSPACE}/config/tako_drivers/"
